@@ -1,5 +1,5 @@
 import { useRef, Suspense } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Oval } from 'react-loader-spinner';
 
 import {
@@ -20,6 +20,11 @@ import {
 const MovieInfo = ({ data }) => {
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
+  const navigate = useNavigate();
+
+  const handleNavigation = path => {
+    navigate(path, { replace: true });
+  };
 
   if (!data) {
     return;
@@ -55,9 +60,13 @@ const MovieInfo = ({ data }) => {
 
       <AdditionalInfoTitle>Additional information</AdditionalInfoTitle>
 
-      <AdditionalInfoLink to="cast">Cast</AdditionalInfoLink>
+      <AdditionalInfoLink onClick={() => handleNavigation('cast')}>
+        Cast
+      </AdditionalInfoLink>
 
-      <AdditionalInfoLink to="reviews">Reviews</AdditionalInfoLink>
+      <AdditionalInfoLink onClick={() => handleNavigation('reviews')}>
+        Reviews
+      </AdditionalInfoLink>
 
       <Suspense
         fallback={

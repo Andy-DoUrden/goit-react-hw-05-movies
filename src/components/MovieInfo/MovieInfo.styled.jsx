@@ -119,7 +119,7 @@ const AdditionalInfoTitle = styled.h2`
   color: #f2ab26;
 `;
 
-const AdditionalInfoLink = styled(Link)`
+const AdditionalInfoLink = styled.button`
   width: 200px;
   margin: 0 auto;
   padding: 10px;
@@ -135,6 +135,7 @@ const AdditionalInfoLink = styled(Link)`
   border-radius: 20px;
 
   transition: 300ms;
+  cursor: pointer;
 
   :hover {
     background-color: #003300;
